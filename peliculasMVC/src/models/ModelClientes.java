@@ -66,7 +66,7 @@ public class ModelClientes {
 public void Conectar(){
     
     try{
-        conexion=DriverManager.getConnection("jdbc:mysql://localhost/cine","root","utec");
+        conexion=DriverManager.getConnection("jdbc:mysql://localhost/peliculas","root","utec");
         st = conexion.createStatement();
         SeleccionarTodos();
 }catch (SQLException ex){
@@ -131,7 +131,7 @@ public void moveAnterior(){
 }
 public void SeleccionarTodos(){
     try{
-        sql="SELECT * FROM clientes;";
+        sql="SELECT * FROM personas;";
         ps =conexion.prepareStatement(sql);
         rs =ps.executeQuery();
         movePrimero();
@@ -176,11 +176,11 @@ public void Actualizar(int id_clientes, String nombre, String telefono, String e
         System.out.println( "pato");
         sql="UPDATE clientes SET nombre =?, telefono=?,email=?,direccion=? WHERE id_clientes=?;";
         ps=conexion.prepareStatement(sql);
-        ps.setInt(5,id_clientes);
+        ps.setInt(4,id_clientes);
         ps.setString(1,nombre);
         ps.setString(2, telefono);
         ps.setString(3, email);
-        ps.setString(4, direccion);
+        ps.setString(3, direccion);
         ps.executeUpdate();
         movePrimero();
         SeleccionarTodos();

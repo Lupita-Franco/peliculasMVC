@@ -28,19 +28,18 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private void initComponents() {
 
         jMenuBar1 = new javax.swing.JMenuBar();
-        jmi_rentas = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
         jmi_clientes = new javax.swing.JMenuItem();
         jmi_peliculas = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
         jmi_salir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jmi_rentas.setText("ARCHIVOS");
+        jMenu1.setText("ARCHIVOS");
 
         jmi_clientes.setText("CLIENTES");
-        jmi_rentas.add(jmi_clientes);
+        jMenu1.add(jmi_clientes);
 
         jmi_peliculas.setText("PELICULAS");
         jmi_peliculas.addActionListener(new java.awt.event.ActionListener() {
@@ -48,15 +47,12 @@ public class ViewPrincipal extends javax.swing.JFrame {
                 jmi_peliculasActionPerformed(evt);
             }
         });
-        jmi_rentas.add(jmi_peliculas);
-
-        jMenuItem1.setText("RENTAS");
-        jmi_rentas.add(jMenuItem1);
+        jMenu1.add(jmi_peliculas);
 
         jmi_salir.setText("SALIR");
-        jmi_rentas.add(jmi_salir);
+        jMenu1.add(jmi_salir);
 
-        jMenuBar1.add(jmi_rentas);
+        jMenuBar1.add(jMenu1);
         jMenuBar1.add(jMenu2);
 
         setJMenuBar(jMenuBar1);
@@ -115,12 +111,11 @@ public class ViewPrincipal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jmi_clientes;
     public javax.swing.JMenuItem jmi_peliculas;
-    public javax.swing.JMenu jmi_rentas;
     public javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables
 }

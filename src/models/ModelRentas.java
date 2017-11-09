@@ -1,5 +1,6 @@
 
 package models;
+
 import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,61 +9,80 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-
-public class ModelClientes {
-   private Connection conexion;
+public class ModelRentas {
+    
+    private Connection conexion;
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
     private String sql;
     
+    private int id_rentas;
     private int id_clientes;
-    private String nombre;
-    private String telefono;
-    private String email;
-    private String direccion;
+    private int id_peliculas;
+    private String formato;
+    private String costo_dia;
+    private String dias;
+    private String renta_total;
 
-   
+    public int getId_rentas() {
+        return id_rentas;
+    }
+
+    public void setId_rentas(int id_rentas) {
+        this.id_rentas = id_rentas;
+    }
+
     public int getId_clientes() {
         return id_clientes;
     }
 
-   
     public void setId_clientes(int id_clientes) {
         this.id_clientes = id_clientes;
     }
-    public String getNombre() {
-        return nombre;
+
+    public int getId_peliculas() {
+        return id_peliculas;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+
+    public void setId_peliculas(int id_peliculas) {
+        this.id_peliculas = id_peliculas;
+    }
+
+    public String getFormato() {
+        return formato;
+    }
+
+    public void setFormato(String formato) {
+        this.formato = formato;
+    }
+
+    public String getCosto_dia() {
+        return costo_dia;
+    }
+
+    public void setCosto_dia(String costo_dia) {
+        this.costo_dia = costo_dia;
+    }
+
+    public String getDias() {
+        return dias;
+    }
+
+    public void setDias(String dias) {
+        this.dias = dias;
+    }
+
+    public String getRenta_total() {
+        return renta_total;
+    }
+
+    public void setRenta_total(String costo_total) {
+        this.renta_total = costo_total;
     }
     
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
- 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-    
-     
+      
+      
 public void Conectar(){
     
     try{
@@ -81,18 +101,21 @@ public void Conectar(){
 }
 public void llenarValores(){
 try{
+setId_rentas(rs.getInt("id_rentas"));
 setId_clientes(rs.getInt("id_clientes"));
-setNombre(rs.getString("nombre"));
-setTelefono(rs.getString("telefono"));
-setEmail(rs.getString("email"));
-setDireccion(rs.getString("direccion"));
+setId_peliculas(rs.getInt("id_peliculas"));
+setFormato(rs.getString("formato"));
+setCosto_dia(rs.getString("costo_dias"));
+setDias(rs.getString("dias"));
+setRenta_total(rs.getString("renta_total"));
 
 }catch (SQLException ex){
 JOptionPane.showMessageDialog(null,"error 2" + ex.getMessage());
 
 }
 }
-public void movePrimero(){
+    
+ public void movePrimero(){
     try{
         rs.first();
         llenarValores();
@@ -131,7 +154,7 @@ public void moveAnterior(){
 }
 public void SeleccionarTodos(){
     try{
-        sql="SELECT * FROM clientes;";
+        sql="SELECT * FROM rentas ;";
         ps =conexion.prepareStatement(sql);
         rs =ps.executeQuery();
         movePrimero();
@@ -141,14 +164,17 @@ public void SeleccionarTodos(){
     }
 }
 
+
 public void insertar(){
     try{
-        sql= "INSERT INTO clientes (nombre,telefono,email,direccion )values (?,?,?,?)";
+        sql= "INSERT INTO rentas (id_clientes,id_peliculas,formato,costo_dia,dias,renta_total )values (?,?,?,?,?,?)";
         ps=conexion.prepareStatement(sql);
-        ps.setString (1,nombre);
-        ps.setString(2,telefono);
-        ps.setString(3,email);
-         ps.setString(4,direccion);
+        ps.setInt (1,id_clientes);
+        ps.setInt(2,id_peliculas);
+        ps.setString(3,formato);
+        ps.setString(4,costo_dia);
+        ps.setString(5,dias);
+        ps.setString(6,renta_total);
         ps.executeUpdate();
         movePrimero();
          SeleccionarTodos();
@@ -156,11 +182,12 @@ public void insertar(){
         JOptionPane.showMessageDialog(null, "error 8");
     }
 }
-public void borrar(int id_clientes){
+
+public void borrar(int id_rentas){
     try{
-       sql="DELETE FROM clientes where id_clientes=?;";
+       sql="DELETE FROM rentas where id_rentas=?;";
        ps =conexion.prepareStatement(sql);
-       ps.setInt(1,id_clientes);
+       ps.setInt(1,id_rentas);
        ps.executeUpdate();
        movePrimero();
        SeleccionarTodos();
@@ -171,27 +198,29 @@ public void borrar(int id_clientes){
         
     }
 }
-public void Actualizar(int id_clientes, String nombre, String telefono, String email,String direccion){
+public void Actualizar(int id_rentas,int id_clientes,int id_peliculas, String formato, String costo_dia, String dias,String costo_rentas){
     try{
         System.out.println( "pato");
-        sql="UPDATE clientes SET nombre =?, telefono=?,email=?,direccion=? WHERE id_clientes=?;";
+        sql="UPDATE rentas SET id_clientes =?, id_peliculas=?,d=?,formato=? , id_costo_dias=?,dias=?,costo_total=?WHERE id_rentas=?;";
         ps=conexion.prepareStatement(sql);
-        ps.setInt(5,id_clientes);
-        ps.setString(1,nombre);
-        ps.setString(2, telefono);
-        ps.setString(3, email);
-        ps.setString(4, direccion);
+        ps.setInt(7,id_rentas);
+        ps.setInt(1,id_clientes);
+        ps.setInt(2,id_peliculas);
+        ps.setString(3, formato);
+        ps.setString(4, costo_dia);
+        ps.setString(5, dias);
+        ps.setString(6, renta_total);
         ps.executeUpdate();
         movePrimero();
         SeleccionarTodos();
     }catch (SQLException ex){
-           JOptionPane.showMessageDialog(null, "error 10" + ex.getMessage());
+           JOptionPane.showMessageDialog(null, "error 8" + ex.getMessage());
     }
    
+
 }
+    
+    
+    
+    
 }
-
-
-
-            
-
