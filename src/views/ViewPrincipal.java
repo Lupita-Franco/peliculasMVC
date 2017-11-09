@@ -31,7 +31,7 @@ public class ViewPrincipal extends javax.swing.JFrame {
         jmi_rentas = new javax.swing.JMenu();
         jmi_clientes = new javax.swing.JMenuItem();
         jmi_peliculas = new javax.swing.JMenuItem();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jmi_renta = new javax.swing.JMenuItem();
         jmi_salir = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
@@ -50,8 +50,13 @@ public class ViewPrincipal extends javax.swing.JFrame {
         });
         jmi_rentas.add(jmi_peliculas);
 
-        jMenuItem1.setText("RENTAS");
-        jmi_rentas.add(jMenuItem1);
+        jmi_renta.setText("RENTAS");
+        jmi_renta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jmi_rentaActionPerformed(evt);
+            }
+        });
+        jmi_rentas.add(jmi_renta);
 
         jmi_salir.setText("SALIR");
         jmi_rentas.add(jmi_salir);
@@ -78,6 +83,10 @@ public class ViewPrincipal extends javax.swing.JFrame {
     private void jmi_peliculasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_peliculasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jmi_peliculasActionPerformed
+
+    private void jmi_rentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jmi_rentaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jmi_rentaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -117,9 +126,9 @@ public class ViewPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     public javax.swing.JMenuItem jmi_clientes;
     public javax.swing.JMenuItem jmi_peliculas;
+    public javax.swing.JMenuItem jmi_renta;
     public javax.swing.JMenu jmi_rentas;
     public javax.swing.JMenuItem jmi_salir;
     // End of variables declaration//GEN-END:variables

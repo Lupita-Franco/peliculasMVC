@@ -16,12 +16,12 @@ public class Main {
         
         ModelPeliculas model_peliculas = new ModelPeliculas();
         ViewPeliculas view_peliculas = new ViewPeliculas();
-       ControllerPeliculas controller_peliculas= new ControllerPeliculas(model_peliculas, view_peliculas);
+     //  ControllerPeliculas controller_peliculas= new ControllerPeliculas(model_peliculas, view_peliculas);
         
         
         ModelRentas model_rentas = new ModelRentas();
         ViewRentas view_rentas = new ViewRentas();
-      ControllerRentas controller_rentas= new ControllerRentas(model_rentas, view_rentas);
+      //ControllerRentas controller_rentas= new ControllerRentas(model_rentas, view_rentas);
         
         ModelPrincipal model_principal = new ModelPrincipal();
         ViewPrincipal view_principal = new ViewPrincipal();

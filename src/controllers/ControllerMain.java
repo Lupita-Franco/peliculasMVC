@@ -36,7 +36,7 @@ public final class ControllerMain{
          initView();
         this.view_principal.jmi_clientes.addActionListener(e ->jmi_clientesActionPerformed());
         this.view_principal.jmi_peliculas.addActionListener(e ->jmi_peliculas_click());
-        this.view_principal.jmi_rentas.addActionListener(e ->jmi_rentas_click());
+        this.view_principal.jmi_renta.addActionListener(e ->jmi_renta_click());
         this.view_principal.jmi_salir.addActionListener(e ->jmi_salir_click());
        //initView();
         
@@ -54,7 +54,7 @@ public final class ControllerMain{
                   if(e.getSource()==view_principal.jmi_rentas)
            jmi_clientesActionPerformed();
            jmi_peliculasActionPerformed();
-           jmi_rentasActionPerformed();
+           jmi_rentaActionPerformed();
     }
     
     
@@ -75,13 +75,13 @@ public final class ControllerMain{
         this.view_principal.revalidate();
         this.view_principal.repaint();
     }
-     public void jmi_rentasActionPerformed() {
+     public void jmi_rentaActionPerformed() {
         this.view_principal.setContentPane(view_rentas);
         this.view_principal.revalidate();
         this.view_principal.repaint();
     }
    
-      public void jmi_rentas_click() {
+      public void jmi_renta_click() {
         this.view_principal.setContentPane(view_rentas);
         this.view_principal.revalidate();
         this.view_principal.repaint();
